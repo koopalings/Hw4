@@ -43,7 +43,7 @@ class Ad extends Model {
                 $this->increment();
                 break;
             case "increment-vulnerable":
-                $this->incrementVuln;
+                $this->incrementVuln();
         }
     }
 
@@ -71,22 +71,74 @@ class Ad extends Model {
      *  Increment counter for ad by 1
      */
     function increment() {
-         $db = parent::connect();
-            $temp;
-            $query = "SELECT * FROM Ads WHERE ID=" . $this->param;
-            $result = mysqli_query($db, $query);
-            $row = mysqli_fetch_assoc($result);
-            $newCount = $row['Counter'] + 1;
-            $query = "UPDATE Ads SET Counter=$newCount WHERE Id=$this->param";
-            mysqli_query($db, $query);
+        if (!is_numeric($this->param)) {
+            $this->results = false;
+            return false;
+        }
+        $db = parent::connect();
+        $temp;
+        $query = "SELECT * FROM Ads WHERE ID=" . $this->param;
+        $result = mysqli_query($db, $query);
+        if (!$result) {
+            $this->results = false;
+            return false;
+        } else
+            $this->results = true;
+        $row = mysqli_fetch_assoc($result);
+        $newCount = $row['Counter'] + 1;
+        $query = "UPDATE Ads SET Counter=$newCount WHERE Id=$this->param";
+        mysqli_query($db, $query);
     }
 
     /**
      *  Increment counter for ad by 1, but this should expose vulnerabilities
-     *  for SQL injection.
+     *  for SQL injection. Try query string: ?id=2 OR id=3
      */
     function incrementVuln() {
+        $db = parent::connect();
+        $temp;
+        $query = "SELECT * FROM Ads WHERE ID=" . $this->param;
+        $result = mysqli_query($db, $query);
+        if (!$result) {
+            $this->results = false;
+            return false;
+        } else
+            $this->results = true;
+        $row = mysqli_fetch_assoc($result);
+        $newCount = $row['Counter'] + 1;
+        $query = "UPDATE Ads SET Counter=$newCount WHERE Id=$this->param";
+        mysqli_query($db, $query);
+    }
 
+    /**
+     *  Sets the counter for all ads to zero.
+     */
+    static function resetCounter() {
+        $db = parent::connect();
+    }
+
+    /**
+     *  Returns all ads in an array; each ad object should have:
+     *  - counter value
+     *  - title
+     *  - id
+     */
+    static function getAllAds() {
+        $db = parent::connect();
+    }
+
+    /**
+     *  Delete ad with specified id
+     */
+    static function deleteAd($id) {
+        $db = parent::connect();
+    }
+
+    /**
+     *  Ad add to database
+     */
+    static function addAd($title, $url, $description) {
+        $db = parent::connect();
     }
 }
 ?>

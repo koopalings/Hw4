@@ -58,7 +58,10 @@ class RestController {
         $param = $this->params[$index]; // expected parameter for method
         if (isset($_REQUEST[$param]) && $_REQUEST[$param] != "") {
             $ads = new Ad($this->methods[$index], $_REQUEST[$param]);
-            if ($this->methods[$index] == 'get-ads')
+
+            if (!$ads->getResults()) {
+                $this->displayError(400);
+            } else if ($this->methods[$index] == 'get-ads')
                 $this->returnFormat($_REQUEST[$param], $ads->getResults());
         }
         else
@@ -83,7 +86,7 @@ class RestController {
      *  Set response code and response for requests that cannot be handled.
      */
     function displayError($status) {
-        http_response_code(404);
+        http_response_code($status);
         switch($status) {
             case 400:
                 echo "Invalid arguments for method.";
