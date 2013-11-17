@@ -161,7 +161,7 @@ class Ad extends Model {
         $row = mysqli_fetch_array($result);
         $count = $row[0] + 1;
         $query = "INSERT INTO Ads 
-            VALUES ($count, $title, $url, $description, 0)";
+            VALUES ($count, '$title', '$url', '$description', 0)";
         $result = mysqli_query($db, $query);
     }
 }
