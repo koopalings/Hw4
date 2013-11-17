@@ -53,7 +53,7 @@ class Ad extends Model {
     function getAd() {
         $db = parent::connect();
         $temp;
-        $query = "SELECT * FROM Ads order by rand() limit 1";
+        $query = "SELECT * FROM Ads where id <> 0 order by rand() limit 1";
         $result = mysqli_query($db, $query);
         $row = mysqli_fetch_assoc($result);
         $temp['Id'] = $row["Id"];
@@ -115,6 +115,8 @@ class Ad extends Model {
      */
     static function resetCounter() {
         $db = parent::connect();
+        $query = "UPDATE Ads set counter = 0";
+        $result = mysqli_query($db, $query);
     }
 
     /**
@@ -125,6 +127,20 @@ class Ad extends Model {
      */
     static function getAllAds() {
         $db = parent::connect();
+        $temp;
+        $query = "SELECT * FROM Ads where id <> 0";
+        $result = mysqli_query($db, $query);
+        $count = mysqli_num_rows($result);
+        for ($i = 0; $i < $count; $i++) {
+            $row = mysqli_fetch_assoc($result);
+            $temp[$i]['Id'] = $row["Id"];
+            $temp[$i]['Title'] = $row["Title"];
+            $temp[$i]['Url'] = $row["Url"];
+            $temp[$i]['Description'] = $row["Description"];
+            $temp[$i]['Counter'] = $row["Counter"];
+        }
+
+        return $temp;
     }
 
     /**
@@ -132,6 +148,8 @@ class Ad extends Model {
      */
     static function deleteAd($id) {
         $db = parent::connect();
+        $query = "DELETE FROM Ads WHERE id = $id";
+        $result = mysqli_query($db, $query);
     }
 
     /**
@@ -139,6 +157,12 @@ class Ad extends Model {
      */
     static function addAd($title, $url, $description) {
         $db = parent::connect();
+        $result = mysqli_query($db, "SELECT COUNT(1) FROM Ads");
+        $row = mysqli_fetch_array($result);
+        $count = $row[0] + 1;
+        $query = "INSERT INTO Ads 
+            VALUES ($count, $title, $url, $description, 0)";
+        $result = mysqli_query($db, $query);
     }
 }
 ?>

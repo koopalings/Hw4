@@ -15,8 +15,9 @@
 
     $str = array_pop(split("/", $uri));
 
-    if ($str == "" || $str == "index.php") {
-        echo  "go to main";
+    if ($str == "" || $str == "index.php" || 
+        strrpos($str, "index.php?") !== FALSE) {
+        $main = new Main();
     } else {
         $restController = new RestController($uri);
     }
