@@ -1,4 +1,4 @@
-            <div class="footer"></div>
+            <script src="js/sitetest.js"></script>
         </body>
     </head>
 </html>

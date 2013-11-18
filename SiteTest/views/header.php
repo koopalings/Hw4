@@ -5,9 +5,8 @@
         <link rel="stylesheet" type="text/css" href="css/fonts.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
     </head>
-    <body onload="">
+    <body onload="getAd()">
         <h1>
             <?php echo SITENAME?>
         </h1>
         <br style="clear:both"/>
-</html>

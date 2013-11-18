@@ -39,3 +39,9 @@
     define('FORMAT', 'json');
 
 ?>
+
+<script>
+    var siteTest = {
+        format : 'json'
+    }
+</script>
