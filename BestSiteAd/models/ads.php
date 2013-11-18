@@ -13,7 +13,7 @@ class Ad extends Model {
      *  Allowed methods for web service
      */
     static $methods = 
-        array("get-ads", "increment-choice", "increment-vulnerable");
+        array("get-ad", "increment-choice", "increment-vulnerable");
 
     /**
      * Allowed parameters
@@ -36,7 +36,7 @@ class Ad extends Model {
      */
     function init() {
         switch ($this->method) {
-            case "get-ads":
+            case "get-ad":
                 $this->getAd();
                 break;
             case "increment-choice":

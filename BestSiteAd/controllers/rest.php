@@ -61,7 +61,7 @@ class RestController {
 
             if (!$ads->getResults()) {
                 $this->displayError(400);
-            } else if ($this->methods[$index] == 'get-ads')
+            } else if ($this->methods[$index] == 'get-ad')
                 $this->returnFormat($_REQUEST[$param], $ads->getResults());
         }
         else
