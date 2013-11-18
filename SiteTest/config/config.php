@@ -35,13 +35,7 @@
     //  table name
     define ('TABLENAME', 'News');
 
-    //  Format to display results from web service
-    define('FORMAT', 'json');
+    //  format of results: xml or json? Lowercase only!!
+    define ('FORMAT', 'json');
 
 ?>
-
-<script>
-    var siteTest = {
-        format : 'json'
-    }
-</script>

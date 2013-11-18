@@ -8,6 +8,7 @@
     require_once('config/config.php');
     require_once(CONTROLLERS . '/main.php');
     require_once(CONTROLLERS . '/rest.php');
+    require_once(VIEWS . '/header.php');
 
     session_start();
 
@@ -21,4 +22,5 @@
     } else {
         $restController = new RestController($uri);
     }
+    require_once(VIEWS . '/footer.php');
 ?>

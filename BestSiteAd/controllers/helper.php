@@ -16,9 +16,11 @@ class Helper {
             <div class='ad-block'>
                 <h2><a href="$url">$title</a></h2>
                 <p>$description</p>
+                <div>
                 <a href="index.php?delete=$id">Delete</a>
                 <p>Counter: $counter</p>
-            <div>
+                </div>
+            </div>
 EOD;
             $str =  $str . $newStr;
         }
