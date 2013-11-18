@@ -17,6 +17,7 @@ class Helper {
                 <h2><a href="$url">$title</a></h2>
                 <p>$description</p>
                 <a href="index.php?delete=$id">Delete</a>
+                <p>Counter: $counter</p>
             <div>
 EOD;
             $str =  $str . $newStr;
