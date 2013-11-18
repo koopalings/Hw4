@@ -6,11 +6,15 @@
 
     require_once('config/config.php');
     require_once(CONTROLLERS . '/main.php');
+    require_once(CONTROLLERS . '/increment-proxy.php');
     require_once(VIEWS . '/header.php');
 
     session_start();
 
-    $main = new Main();
+    if (isset($_REQUEST['c']) == "increment") {
+        $proxy = new IncrementProxy();
+    } else
+        $main = new Main();
     require_once(VIEWS . '/footer.php');
 
 ?>

@@ -28,8 +28,9 @@ function getAd() {
                 var title = ad['Title'];
                 var descr = ad['Description'];
                 var id =  ad['Id']
-                var HTMLstr = "<h2><a href='index.php?url=" + url + "&id=" +
-                id + "'>" + title + "</a></h2>" + "<p>" + descr + "</p>";
+                var HTMLstr = "<h2><a href='index.php?c=increment&url=" + 
+                url + "&id=" + id + "'>" + title + "</a></h2>" + "<p>" + 
+                descr + "</p>";
                 q.el('#advertisement').innerHTML = HTMLstr;
             } else {
 

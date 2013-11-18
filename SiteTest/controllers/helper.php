@@ -9,7 +9,7 @@ class Helper {
      */
     static function toHTMLStr($news) {
         $title = $news[0]['Title'];
-        $url = $news[0]['Url'];
+        $url = 'index.php?c=increment&id=0&url=' . $news[0]['Url'];
         $description = $news[0]['Description'];
         $str = <<<EOD
         <div class="news-container">
@@ -21,7 +21,7 @@ class Helper {
 EOD;
         for ($i = 1; $i < sizeof($news); $i++) {
             $title = $news[$i]['Title'];
-            $url = $news[$i]['Url'];
+            $url = 'index.php?c=increment&id=0&url=' . $news[$i]['Url'];
             $description = $news[$i]['Description'];
             $newStr = <<<EOD
         <div class="news-container">
