@@ -32,6 +32,6 @@ h2 > a {
     font-size: 20px
 }
 
-.news-container > p{
+.news-container > p, #advertisement > p{
     padding: 7px;
 }

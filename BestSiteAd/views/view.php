@@ -9,6 +9,7 @@ class View {
     }
 
     function draw() {
+        require_once(VIEWS . '/header.php');
         echo <<<EOD
         <div id="add-container" class="left-container">
             <h2>Submit Ad</h2>
@@ -32,6 +33,7 @@ EOD;
 EOD;
         echo '<div id="ads-container">' . $this->ads . '</div>';
         echo '</div>';
+        require_once(VIEWS . '/footer.php');
     }
 }
 ?>
