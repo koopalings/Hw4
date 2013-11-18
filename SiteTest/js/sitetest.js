@@ -5,7 +5,6 @@ var q = {
     els: function(selector) {
         return document.querySelectorAll(selector);
     }
-
 }
 
 function getAd() {
@@ -28,13 +27,32 @@ function getAd() {
                 var title = ad['Title'];
                 var descr = ad['Description'];
                 var id =  ad['Id']
-                var HTMLstr = "<h2><a href='index.php?c=increment&url=" + 
+            } else {
+                var parser;
+                if (window.DOMParser)
+                {
+                    parser = new DOMParser();
+                    xml = parser.parseFromString(request.responseText, 
+                        "text/xml");
+                } else {
+                  xml = new ActiveXObject("Microsoft.XMLDOM");
+                  xml.async = false;
+                  xml.loadXML(request.responseText);
+                }
+            var url = 
+            xml.getElementsByTagName("Url")[0].childNodes[0].nodeValue;
+            var title =
+            xml.getElementsByTagName("Title")[0].childNodes[0].nodeValue;
+            var descr =
+            xml.getElementsByTagName("Description")[0].childNodes[0].nodeValue;
+            var id = 
+            xml.getElementsByTagName("Id")[0].childNodes[0].nodeValue;
+            }
+
+            var HTMLstr = "<h2><a href='index.php?c=increment&url=" + 
                 url + "&id=" + id + "'>" + title + "</a></h2>" + "<p>" + 
                 descr + "</p>";
                 q.el('#advertisement').innerHTML = HTMLstr;
-            } else {
-
-            }
         }
     }
     request.send();
