@@ -1,5 +1,7 @@
+<!DOCTYPE Ad [
 <!ELEMENT Ad (Id,Title,Url,Description)>
 <!ELEMENT Id (#PCDATA)>
 <!ELEMENT Title (#PCDATA)>
 <!ELEMENT Url (#PCDATA)>
 <!ELEMENT Description (#PCDATA)>
+]>
