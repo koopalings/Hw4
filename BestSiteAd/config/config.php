@@ -21,7 +21,7 @@
     define('SITENAME', 'BestSiteAd');
 
     //  name of database server
-    define('DBSERVER', '127.0.0.1');
+    define('DBSERVER', 'localhost:3306');
 
     //  database user name
     define('DBUSER', 'root');

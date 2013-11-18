@@ -49,3 +49,12 @@ As you make this GET request (from the browser), the row with
 id == 2 and id == 3 will have its counter incremented. To test 
 that this is an intended vulnerability, try to do the same with 
 method increment-choice -- you will receive an error.
+
+==============================================================
+Issues with MAMP
+==============================================================
+
+I used XAMPP for testing throughout development, but when I 
+tried to run this on MAMP, it seemed like there was a database 
+connection issue that I could not figure out. Everything seems 
+to work fine using XAMPP.
