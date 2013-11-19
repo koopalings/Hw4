@@ -1,7 +1,7 @@
 <?php
 
     $format = $_REQUEST['format'];
-    $url = 'http://' .  $_SERVER['SERVER_NAME'] . 
+    $url = 'http://' .  $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'].
         '/Hw4/BestSiteAd/index.php/get-ad/?format='.$format;
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);

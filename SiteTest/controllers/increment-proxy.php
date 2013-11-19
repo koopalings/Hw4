@@ -5,7 +5,8 @@ class IncrementProxy {
     function __construct() {
         $id = $_REQUEST['id'];
         $redirect = $_REQUEST['url'];
-        $url = 'http://' . $_SERVER['SERVER_NAME'] . 
+        $url = 'http://' . $_SERVER['SERVER_NAME'] . ':' 
+        . $_SERVER['SERVER_PORT'].
             '/Hw4/BestSiteAd/index.php/increment-choice/?id=' . $id;
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
